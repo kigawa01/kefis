@@ -1,8 +1,8 @@
-# NAME
+# kefis
 
 ## About
 
-*
+* sync files
 
 ## Requirement
 

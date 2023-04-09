@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="kefis-core" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="kefis-core" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="net.kigawa.kefis.Kefis" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
