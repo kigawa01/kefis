@@ -3,18 +3,18 @@ package net.kigawa.kefis
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-//@RestController
+@RestController
 class Test {
   companion object{
     init {
-//      println("companion")
+      println("companion")
     }
   }
   init {
-//    println("init")
+    println("init")
   }
   
-//  @RequestMapping(value = ["/"])
+  @RequestMapping(value = ["/"])
   fun index(): String {
     return "test"
   }

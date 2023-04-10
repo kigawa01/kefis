@@ -13,12 +13,12 @@ open class Kefis {
     fun main(args: Array<String>) {
       val loader = ClassLoader(
         listOf(
-          File("F:\\project\\dev\\kefis\\kefis-manager\\target\\kefis-manager-1.0.jar").toURI().toURL()
+          File("kefis-manager\\target\\classes").toURI().toURL()
         )
       )
-      loader.loadClass("net.kigawa.kefis.Test")
-      Thread.currentThread().contextClassLoader = loader
-      SpringApplication.run(Kefis::class.java, *args)
+      val clazz = loader.loadClass("net.kigawa.kefis.manager.KefisManager")
+      
+      SpringApplication.run(arrayOf(Kefis::class.java,clazz), args)
     }
   }
 }
