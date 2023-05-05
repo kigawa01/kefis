@@ -7,10 +7,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>kefis-store</artifactId>
+    <artifactId>kefis-rest-obj</artifactId>
     <packaging>jar</packaging>
 
-    <name>keffis-store</name>
+    <name>kefis-rest-obj</name>
     <url>http://maven.apache.org</url>
 
     <properties>

@@ -7,6 +7,15 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/kefis-boot-loader/pom.xml" />
+        <option value="$PROJECT_DIR$/kefis-core/pom.xml" />
+        <option value="$PROJECT_DIR$/kefis-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/kefis-store/pom.xml" />
+        <option value="$PROJECT_DIR$/kefis-uploader/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17 (2)" project-jdk-type="JavaSDK" />
   <component name="ProjectType">

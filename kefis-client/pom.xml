@@ -7,10 +7,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>kefis-uploader</artifactId>
+    <artifactId>kefis-client</artifactId>
     <packaging>jar</packaging>
 
-    <name>kefis-uploader</name>
+    <name>kefis-client</name>
     <url>http://maven.apache.org</url>
 
     <properties>
