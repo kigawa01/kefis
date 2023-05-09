@@ -7,10 +7,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>kefis-client</artifactId>
+    <artifactId>kefis-rest</artifactId>
     <packaging>jar</packaging>
 
-    <name>kefis-client</name>
+    <name>kefis-rest</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -23,6 +23,11 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.kigawa</groupId>
+            <artifactId>kefis-rest-core</artifactId>
+            <version>${version}</version>
         </dependency>
     </dependencies>
 </project>

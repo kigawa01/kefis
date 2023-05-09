@@ -7,10 +7,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>kefis-server</artifactId>
+    <artifactId>kefis-rest-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>kefis-server</name>
+    <name>kefis-rest</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -26,12 +26,7 @@
         </dependency>
         <dependency>
             <groupId>net.kigawa</groupId>
-            <artifactId>kefis-server</artifactId>
-            <version>${version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.kigawa</groupId>
-            <artifactId>kefis-rest</artifactId>
+            <artifactId>kefis-rest-core</artifactId>
             <version>${version}</version>
         </dependency>
     </dependencies>

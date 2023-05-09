@@ -3,14 +3,18 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/kefis-boot-loader/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-boot-loader/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kefis-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kefis-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-client-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-client-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-manager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-manager/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kefis-rest-obj/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kefis-rest-obj/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-rest-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-rest-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-rest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-rest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-server-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kefis-server-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kefis-store/src/main/java" charset="UTF-8" />

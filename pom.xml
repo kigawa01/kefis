@@ -5,9 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
+        <module>kefis-server-core</module>
+        <module>kefis-client-core</module>
+        <module>kefis-rest-core</module>
+        <module>kefis-rest</module>
         <module>kefis-server</module>
-        <module>kefis-client</module>
-        <module>kefis-rest-obj</module>
     </modules>
 
     <properties>
@@ -95,6 +97,11 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.kigawa.kutil</groupId>
+            <artifactId>kutil</artifactId>
+            <version>2.2.1</version>
         </dependency>
     </dependencies>
 </project>
