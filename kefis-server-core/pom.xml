@@ -88,7 +88,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>net.kigawa.kefis.server.KefisServer</mainClass>
+                            <mainClass>net.kigawa.kefis.core.server.KefisServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,4 +1,4 @@
-package net.kigawa.kefis.rest.core
+package net.kigawa.kefis.core.rest
 
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

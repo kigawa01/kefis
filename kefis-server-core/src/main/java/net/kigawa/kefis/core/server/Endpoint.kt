@@ -1,4 +1,4 @@
-package net.kigawa.kefis.server
+package net.kigawa.kefis.core.server
 
 import jakarta.servlet.http.HttpServletRequest
 

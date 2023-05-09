@@ -1,7 +1,7 @@
 package net.kigawa.kefis.rest.endpoint
 
-import net.kigawa.kefis.rest.core.EndpointDef
-import net.kigawa.kefis.rest.core.EndpointPath
+import net.kigawa.kefis.core.rest.EndpointDef
+import net.kigawa.kefis.core.rest.EndpointPath
 
 @EndpointPath(path = "/upload")
 interface Upload: EndpointDef {

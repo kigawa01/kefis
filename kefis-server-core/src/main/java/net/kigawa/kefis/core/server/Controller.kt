@@ -1,6 +1,7 @@
-package net.kigawa.kefis.server
+package net.kigawa.kefis.core.server
 
 import jakarta.servlet.http.HttpServletRequest
+import net.kigawa.kutil.kutil.err.ErrorHandler
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
