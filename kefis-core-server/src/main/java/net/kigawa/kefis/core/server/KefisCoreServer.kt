@@ -5,14 +5,19 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-open class KefisServer {
+open class KefisCoreServer {
   
   
   companion object {
+    @JvmStatic
+    fun main(args: Array<String>) {
+      run(KefisCoreServer::class.java, args)
+    }
+    
     fun run(rootClass: Class<*>, args: Array<String>, container: UnitContainer = UnitContainer.create()) {
       Config.container = container
       Config.rootClass = rootClass
-      SpringApplication.run(KefisServer::class.java, *args)
+      SpringApplication.run(KefisCoreServer::class.java, *args)
     }
   }
 }
