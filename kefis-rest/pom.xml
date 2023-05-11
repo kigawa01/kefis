@@ -27,7 +27,7 @@
         <dependency>
             <groupId>net.kigawa</groupId>
             <artifactId>kefis-rest-core</artifactId>
-            <version>${version}</version>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 </project>

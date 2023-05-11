@@ -1,4 +1,4 @@
-package net.kigawa.kefis.core.server
+package net.kigawa.kefis.core.server.util
 
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.unitapi.exception.UnitException

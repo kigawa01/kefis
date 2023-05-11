@@ -1,6 +1,14 @@
 package net.kigawa.kefis.core.rest
 
-open class PathBuilder {
+import java.net.URI
+
+open class PathBuilder() {
+  constructor(path: String): this() {
+    append(path)
+  }
+  
+  constructor(uri: URI): this(uri.path)
+  
   lateinit var path: String
     protected set
   

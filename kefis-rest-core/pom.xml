@@ -24,10 +24,5 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.kigawa</groupId>
-            <artifactId>kefis-rest-core</artifactId>
-            <version>${version}</version>
-        </dependency>
     </dependencies>
 </project>

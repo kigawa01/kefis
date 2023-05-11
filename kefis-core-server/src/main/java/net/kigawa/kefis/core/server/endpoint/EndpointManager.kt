@@ -1,14 +1,16 @@
-package net.kigawa.kefis.core.server
+package net.kigawa.kefis.core.server.endpoint
 
-import jakarta.servlet.http.HttpServletRequest
 import net.kigawa.kefis.core.rest.*
-import net.kigawa.kefis.core.server.UnitUtil.getOrCreateUnit
+import net.kigawa.kefis.core.server.Config
+import net.kigawa.kefis.core.server.Request
+import net.kigawa.kefis.core.server.util.ReflectionUtil
+import net.kigawa.kefis.core.server.util.UnitUtil.getOrCreateUnit
+import net.kigawa.kefis.core.server.util.UnitUtil.getOrRegisterUnit
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.kutil.reflection.KutilReflect
 import net.kigawa.kutil.unitapi.component.UnitContainer
 import org.springframework.stereotype.Service
 import java.lang.reflect.Method
-import java.net.URI
 
 @Service
 class EndpointManager(
@@ -16,8 +18,7 @@ class EndpointManager(
   private val errorHandler: ErrorHandler<Exception>,
 ) {
   init {
-    ReflectionUtil
-      .classList(Config.rootClass.classLoader, errorHandler, Config.rootClass.packageName)
+    ReflectionUtil.classList(Config.rootClass.classLoader, errorHandler, Config.rootClass.packageName)
       .filter {KutilReflect.instanceOf(it, EndpointDef::class.java)}
       .forEach {
         @Suppress("UNCHECKED_CAST")
@@ -36,21 +37,18 @@ class EndpointManager(
   
   @Synchronized
   fun registerEndpointMethod(endpointDefClass: Class<out EndpointDef>, method: Method) {
-    val endpointPathBuilder = EndpointPathBuilder()
+    val endpointInfo = EndpointInfo()
       .append(endpointDefClass.getAnnotation(EndpointPath::class.java))
       .append(method.getAnnotation(EndpointPath::class.java))
     
-    val endpoint =
-      container.getOrCreateUnit(Endpoint::class.java, endpointPathBuilder.path) {Endpoint(endpointPathBuilder.path)}
+    val pathEndpoint =
+      container.getOrCreateUnit(PathEndpoint::class.java, endpointInfo.path) {PathEndpoint(endpointInfo.path)}
+    val endpointDef = container.getOrRegisterUnit(endpointDefClass)
     
-    val endpointInfo = EndpointInfo(endpointPathBuilder)
-    
-    if (endpoint == null) createEndpoint()
-    else updateEndpoint()
+    pathEndpoint.append(endpointDef, method, endpointInfo)
   }
   
-  fun findEndpoint(request: HttpServletRequest): Endpoint {
-    val uri = URI(request.requestURL.toString())
-    return container.getUnit(Endpoint::class.java, PathBuilder().append(uri.path).path)
+  fun findEndpoint(request: Request): Endpoint {
+    return container.getUnit(PathEndpoint::class.java, request.path).request(request)
   }
 }

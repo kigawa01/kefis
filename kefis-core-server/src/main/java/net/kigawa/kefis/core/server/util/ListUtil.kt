@@ -1,4 +1,4 @@
-package net.kigawa.kefis.core.server
+package net.kigawa.kefis.core.server.util
 
 object ListUtil {
 }

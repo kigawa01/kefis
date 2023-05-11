@@ -1,4 +1,4 @@
-package net.kigawa.kefis.core.server
+package net.kigawa.kefis.core.server.util
 
 import net.kigawa.kutil.unitapi.UnitIdentify
 import net.kigawa.kutil.unitapi.component.UnitContainer
@@ -7,6 +7,15 @@ import net.kigawa.kutil.unitapi.registrar.ClassRegistrar
 import net.kigawa.kutil.unitapi.registrar.InstanceRegistrar
 
 object UnitUtil {
+  
+  fun <T: Any> UnitContainer.getOrRegisterUnit(unitClass: Class<T>): T {
+    return getOrRegisterUnit(unitClass, null)
+  }
+  
+  fun <T: Any> UnitContainer.getOrRegisterUnit(unitClass: Class<T>, name: String?): T {
+    return getOrRegisterUnit(UnitIdentify(unitClass, name))
+  }
+  
   @Synchronized
   fun <T: Any> UnitContainer.getOrRegisterUnit(identify: UnitIdentify<T>): T {
     val unit = getOrNullUnit(identify)

@@ -7,7 +7,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>kefis-server-core</artifactId>
+    <artifactId>kefis-core-server</artifactId>
     <packaging>jar</packaging>
 
     <name>kefis-server</name>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>net.kigawa</groupId>
             <artifactId>kefis-rest-core</artifactId>
-            <version>${version}</version>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 
@@ -88,7 +88,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>net.kigawa.kefis.core.server.KefisServer</mainClass>
+                            <mainClass>net.kigawa.kefis.core.server.KefisCoreServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

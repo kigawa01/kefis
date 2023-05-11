@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>kefis-server-core</module>
+        <module>kefis-core-server</module>
         <module>kefis-client-core</module>
         <module>kefis-rest-core</module>
         <module>kefis-rest</module>

@@ -6,18 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="kefis-core-server" />
         <module name="kefis-client-core" />
         <module name="kefis-server" />
         <module name="kefis-rest-core" />
-        <module name="kefis-server-core" />
         <module name="kefis-rest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="kedfis-uploader" target="17" />
       <module name="kefis-boot-loader" target="17" />
+      <module name="kefis-client" target="17" />
       <module name="kefis-core" target="17" />
       <module name="kefis-manager" target="17" />
+      <module name="kefis-rest-obj" target="17" />
       <module name="kefis-store" target="17" />
       <module name="kefis-uploader" target="17" />
     </bytecodeTargetLevel>

@@ -26,13 +26,13 @@
         </dependency>
         <dependency>
             <groupId>net.kigawa</groupId>
-            <artifactId>kefis-server</artifactId>
-            <version>${version}</version>
+            <artifactId>kefis-core-server</artifactId>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>net.kigawa</groupId>
             <artifactId>kefis-rest</artifactId>
-            <version>${version}</version>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
 </project>

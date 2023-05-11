@@ -1,5 +1,6 @@
 package net.kigawa.kefis.core.server
 
+import jakarta.servlet.http.HttpServletRequest
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.kutil.err.StreamErrorHandler
 import net.kigawa.kutil.unitapi.component.UnitContainer
@@ -23,4 +24,9 @@ open class Config: WebMvcConfigurer {
   open fun errorHandler(): ErrorHandler<Exception> {
     return StreamErrorHandler(Exception::class.java)
   }
+  
+//  @Bean
+//  open fun request(httpServletRequest: HttpServletRequest): Request {
+//    return Request()
+//  }
 }
