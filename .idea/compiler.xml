@@ -20,6 +20,7 @@
       <module name="kefis-core" target="17" />
       <module name="kefis-manager" target="17" />
       <module name="kefis-rest-obj" target="17" />
+      <module name="kefis-server-core" target="17" />
       <module name="kefis-store" target="17" />
       <module name="kefis-uploader" target="17" />
     </bytecodeTargetLevel>

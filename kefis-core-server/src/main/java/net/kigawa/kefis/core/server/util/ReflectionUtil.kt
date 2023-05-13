@@ -11,6 +11,10 @@ object ReflectionUtil {
   const val JAR_PROTOCOL = "jar"
   const val FILE_PROTOCOL = "file"
   
+  fun crateInstance(clazz: Class<*>, values: Any?): Any? {
+  
+  }
+  
   fun classList(classLoader: ClassLoader, errorHandler: ErrorHandler<Exception>, packageName: String): List<Class<*>> {
     val packageDir = packageName.replace('.', '/')
     

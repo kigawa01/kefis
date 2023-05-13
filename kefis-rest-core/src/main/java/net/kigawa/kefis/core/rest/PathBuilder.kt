@@ -9,7 +9,7 @@ open class PathBuilder() {
   
   constructor(uri: URI): this(uri.path)
   
-  lateinit var path: String
+  var path: String = ""
     protected set
   
   fun append(path: String?): PathBuilder {

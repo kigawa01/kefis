@@ -2,6 +2,7 @@ package net.kigawa.kefis.core.server.endpoint
 
 import net.kigawa.kefis.core.rest.*
 import net.kigawa.kefis.core.server.Request
+import net.kigawa.kefis.core.server.util.ReflectionUtil
 import java.lang.reflect.Method
 
 class Endpoint internal constructor(
@@ -30,7 +31,12 @@ class Endpoint internal constructor(
     return false
   }
   
-  fun call(request: Request) {
-  
+  fun call(request: Request, json: Map<String, Any>) {
+    reflectMethod.parameters.map {parameter->
+      json[parameter.name]
+        .let {ReflectionUtil.crateInstance(parameter.type, it)}
+    }.let {
+      reflectMethod.invoke(endpointDef, *it.toTypedArray())
+    }
   }
 }
