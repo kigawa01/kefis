@@ -1,8 +1,10 @@
 package net.kigawa.kefis.core.server.util
 
 import net.kigawa.kutil.kutil.err.ErrorHandler
+import net.kigawa.kutil.unitapi.annotation.Inject
 import net.kigawa.kutil.unitapi.exception.UnitException
 import java.io.File
+import java.lang.reflect.Constructor
 import java.net.JarURLConnection
 import java.net.URL
 import java.util.*
@@ -11,8 +13,23 @@ object ReflectionUtil {
   const val JAR_PROTOCOL = "jar"
   const val FILE_PROTOCOL = "file"
   
-  fun crateInstance(clazz: Class<*>, values: Any?): Any? {
+  @Suppress("UNCHECKED_CAST")
+  fun <T> crateInstance(clazz: Class<T>, values: Any?): T? {
+    if (values == null) return null
+    if (clazz.isInstance(values)) return values as T?
+    
+    val constructor = getConstructor(clazz)
+  }
   
+  fun getConstructor(clazz: Class<*>): Constructor<*> {
+    val constructors = clazz.constructors
+    if (constructors.size == 1) return constructors[0]
+    for (constructor in constructors) {
+      if (constructor.isAnnotationPresent(Inject::class.java)) {
+        return constructor
+      }
+    }
+    throw ConstructorException("could not get constructor", clazz)
   }
   
   fun classList(classLoader: ClassLoader, errorHandler: ErrorHandler<Exception>, packageName: String): List<Class<*>> {
