@@ -1,9 +1,11 @@
 package net.kigawa.kefis.core.server
 
-import jakarta.servlet.http.HttpServletRequest
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.kutil.err.StreamErrorHandler
 import net.kigawa.kutil.unitapi.component.UnitContainer
+import net.kigawa.kutil.unitapi.component.UnitStoreComponent
+import net.kigawa.kutil.unitapi.registrar.InstanceRegistrar
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
@@ -16,7 +18,13 @@ open class Config: WebMvcConfigurer {
   }
   
   @Bean
-  open fun container(): UnitContainer {
+  @Synchronized
+  open fun container(applicationContext: ApplicationContext, ): UnitContainer {
+    if (container.getUnitList(SpringContainerStore::class.java).isNotEmpty()) return container
+    
+    container.getUnit(InstanceRegistrar::class.java).register(applicationContext)
+    container.getUnit(UnitStoreComponent::class.java).add(SpringContainerStore::class.java)
+    
     return container
   }
   
@@ -24,7 +32,7 @@ open class Config: WebMvcConfigurer {
   open fun errorHandler(): ErrorHandler<Exception> {
     return StreamErrorHandler(Exception::class.java)
   }
-  
+
 //  @Bean
 //  open fun request(httpServletRequest: HttpServletRequest): Request {
 //    return Request()

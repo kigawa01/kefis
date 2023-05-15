@@ -1,20 +1,17 @@
 package net.kigawa.kefis.core.server
 
-import net.kigawa.kefis.core.server.endpoint.EndpointManager
+import net.kigawa.kefis.core.server.endpoint.EndpointStore
+import net.kigawa.kutil.unitapi.component.UnitContainer
 import org.springframework.web.bind.annotation.*
 
 @RestController
 class Controller(
-  private val endpointManager: EndpointManager,
+  private val endpointStore: EndpointStore,
   private val request: Request,
+  private val container: UnitContainer,
 ) {
-//  @RequestMapping(value = ["/**"])
-//  fun index(request: Request, obj: Any): Any {
-//    return endpointManager.findEndpoint(request).call(request)
-//  }
-  
-  @RequestMapping(value = ["/"])
-  fun index(@RequestBody json: Map<String, Any>): Any {
-    return endpointManager.findEndpoint(request).call(request, json)
+  @RequestMapping(value = ["/**"])
+  fun index(@RequestBody json: Map<String, Any>): Any? {
+    return endpointStore.find(request).call(container, request, json)
   }
 }

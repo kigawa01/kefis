@@ -1,4 +1,6 @@
-package net.kigawa.kefis.core.rest
+package net.kigawa.kefis.core.rest.annotation
+
+import net.kigawa.kefis.core.rest.RequestMethod
 
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

@@ -5,15 +5,15 @@ import net.kigawa.kefis.core.rest.EndpointInfo
 import net.kigawa.kefis.core.server.Request
 import net.kigawa.kutil.kutil.list.KList
 import net.kigawa.kutil.kutil.list.contains
+import org.springframework.stereotype.Service
 import java.lang.reflect.Method
 
-class PathEndpoint(
-  val path: String,
-) {
+@Service
+class EndpointStore {
   private val endpoints = KList.create<Endpoint>()
   
   @Synchronized
-  fun append(endpointDef: EndpointDef, reflectMethod: Method, endpointInfo: EndpointInfo): PathEndpoint {
+  fun append(endpointDef: EndpointDef, reflectMethod: Method, endpointInfo: EndpointInfo): EndpointStore {
     val endpoint = Endpoint(endpointDef, reflectMethod, endpointInfo)
     
     if (endpoints.contains {
@@ -24,11 +24,13 @@ class PathEndpoint(
     return this
   }
   
-  fun request(request: Request): Endpoint {
-    endpoints.forEach {
+  fun find(request: Request): Endpoint {
+    val list = endpoints
+      .filter {it.path == request.path}
+    list.forEach {
       if (it.requestMethods.contains(request.requestMethod)) return it
     }
-    endpoints.forEach {
+    list.forEach {
       if (it.requestMethods.isEmpty()) return it
     }
     throw EndpointNotFoundException("end point not found '$request'")

@@ -1,5 +1,6 @@
 package net.kigawa.kefis.core.server.util
 
+import net.kigawa.kefis.core.rest.annotation.IgnoreField
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.unitapi.annotation.Inject
 import net.kigawa.kutil.unitapi.exception.UnitException
@@ -19,10 +20,21 @@ object ReflectionUtil {
     if (clazz.isInstance(values)) return values as T?
     
     val constructor = getConstructor(clazz)
+    
+    val instance = constructor.newInstance()
+    
+    values as Map<String, Any>
+    clazz.fields.forEach {
+      if (it.isAnnotationPresent(IgnoreField::class.java)) return@forEach
+      it.set(instance, crateInstance(it.type, values[it.name]))
+    }
+    
+    return instance
   }
   
-  fun getConstructor(clazz: Class<*>): Constructor<*> {
-    val constructors = clazz.constructors
+  fun <T> getConstructor(clazz: Class<T>): Constructor<T> {
+    @Suppress("UNCHECKED_CAST")
+    val constructors = clazz.constructors as Array<Constructor<T>>
     if (constructors.size == 1) return constructors[0]
     for (constructor in constructors) {
       if (constructor.isAnnotationPresent(Inject::class.java)) {
