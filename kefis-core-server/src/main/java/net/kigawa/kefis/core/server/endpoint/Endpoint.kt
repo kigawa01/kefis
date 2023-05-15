@@ -2,8 +2,6 @@ package net.kigawa.kefis.core.server.endpoint
 
 import net.kigawa.kefis.core.rest.*
 import net.kigawa.kefis.core.rest.annotation.RequestBody
-import net.kigawa.kefis.core.server.Request
-import net.kigawa.kefis.core.server.util.ReflectionUtil
 import net.kigawa.kutil.unitapi.annotation.ArgName
 import net.kigawa.kutil.unitapi.component.UnitContainer
 import java.lang.reflect.Method
@@ -34,11 +32,11 @@ class Endpoint internal constructor(
     return false
   }
   
-  fun call(container: UnitContainer, request: Request, json: Map<String, Any>): Any? {
+  fun call(container: UnitContainer, json: Map<String, Any>): Any? {
     reflectMethod.parameters.map {parameter->
       
       parameter.getAnnotation(RequestBody::class.java)?.let {
-        return@map getRequestBody(parameter.type, it.name, json)
+        return@map container.getUnit(EndpointFactory::class.java).crateInstance(parameter.type, json[it.name])
       }
       
       val argName = parameter.getAnnotation(ArgName::class.java)
@@ -46,9 +44,5 @@ class Endpoint internal constructor(
     }.let {
       return reflectMethod.invoke(endpointDef, *it.toTypedArray())
     }
-  }
-  
-  fun <T: Any> getRequestBody(clazz: Class<T>, name: String, json: Map<String, Any>): T? {
-    return ReflectionUtil.crateInstance(clazz, json[name])
   }
 }

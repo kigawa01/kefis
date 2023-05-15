@@ -12,6 +12,6 @@ class Controller(
 ) {
   @RequestMapping(value = ["/**"])
   fun index(@RequestBody json: Map<String, Any>): Any? {
-    return endpointStore.find(request).call(container, request, json)
+    return endpointStore.find(request).call(container, json)
   }
 }

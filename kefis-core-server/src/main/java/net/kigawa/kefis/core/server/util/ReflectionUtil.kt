@@ -1,6 +1,5 @@
 package net.kigawa.kefis.core.server.util
 
-import net.kigawa.kefis.core.rest.annotation.IgnoreField
 import net.kigawa.kutil.kutil.err.ErrorHandler
 import net.kigawa.kutil.unitapi.annotation.Inject
 import net.kigawa.kutil.unitapi.exception.UnitException
@@ -14,33 +13,21 @@ object ReflectionUtil {
   const val JAR_PROTOCOL = "jar"
   const val FILE_PROTOCOL = "file"
   
-  @Suppress("UNCHECKED_CAST")
-  fun <T> crateInstance(clazz: Class<T>, values: Any?): T? {
-    if (values == null) return null
-    if (clazz.isInstance(values)) return values as T?
-    
-    val constructor = getConstructor(clazz)
-    
-    val instance = constructor.newInstance()
-    
-    values as Map<String, Any>
-    clazz.fields.forEach {
-      if (it.isAnnotationPresent(IgnoreField::class.java)) return@forEach
-      it.set(instance, crateInstance(it.type, values[it.name]))
-    }
-    
-    return instance
-  }
-  
   fun <T> getConstructor(clazz: Class<T>): Constructor<T> {
     @Suppress("UNCHECKED_CAST")
     val constructors = clazz.constructors as Array<Constructor<T>>
     if (constructors.size == 1) return constructors[0]
-    for (constructor in constructors) {
-      if (constructor.isAnnotationPresent(Inject::class.java)) {
-        return constructor
+    
+    constructors.forEach {
+      if (it.parameterCount == 0) return it
+    }
+    
+    constructors.forEach {
+      if (it.isAnnotationPresent(Inject::class.java)) {
+        return it
       }
     }
+    
     throw ConstructorException("could not get constructor", clazz)
   }
   
