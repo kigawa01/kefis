@@ -4,12 +4,20 @@
 
 plugins {
     id("net.kigawa.java-conventions")
+    kotlin("jvm") version "1.8.21"
 }
 
 dependencies {
     api("net.kigawa.kutil:kutil-unit:4.3.0")
     api("net.kigawa.kutil:kutil-unit-api:4.3.0")
     testImplementation("junit:junit:3.8.1")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 description = "kefis-client"
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(11)
+}

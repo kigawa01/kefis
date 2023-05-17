@@ -3,16 +3,24 @@
  */
 
 plugins {
-    id("net.kigawa.java-conventions")
+  id("net.kigawa.java-conventions")
+  kotlin("jvm") version "1.8.21"
 }
 
 dependencies {
-    api("org.springframework.boot:spring-boot-starter-web:3.0.6")
-    api("net.kigawa.kutil:kutil-unit:4.3.0")
-    api(project(":kefis-rest-core"))
-    runtimeOnly("org.springframework.boot:spring-boot-devtools:3.0.6")
-    testImplementation("junit:junit:3.8.1")
-    testImplementation("org.springframework.boot:spring-boot-starter-test:3.0.6")
+  api("org.springframework.boot:spring-boot-starter-web:3.0.6")
+  api("net.kigawa.kutil:kutil-unit:4.3.0")
+  api(project(":kefis-rest-core"))
+  runtimeOnly("org.springframework.boot:spring-boot-devtools:3.0.6")
+  testImplementation("junit:junit:3.8.1")
+  testImplementation("org.springframework.boot:spring-boot-starter-test:3.0.6")
+  implementation(kotlin("stdlib-jdk8"))
 }
 
 description = "kefis-server"
+repositories {
+  mavenCentral()
+}
+kotlin {
+  jvmToolchain(11)
+}

@@ -4,10 +4,18 @@
 
 plugins {
     id("net.kigawa.java-conventions")
+  kotlin("jvm") version "1.8.21"
 }
 
 dependencies {
     testImplementation("junit:junit:3.8.1")
+  implementation(kotlin("stdlib-jdk8"))
 }
 
 description = "kefis-rest"
+repositories {
+  mavenCentral()
+}
+kotlin {
+  jvmToolchain(11)
+}
